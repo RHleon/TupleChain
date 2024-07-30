@@ -8,4 +8,4 @@ There is a relationship between the entries in the hash table of different tuple
 
 Tuples are linked to each other to form a chain. Since the tuples on the chain have a front-end relationship, the access to the tuples on the chain can be accelerated by binary search, that is, the chain can be built into a binary search tree. The framework diagram of this algorithm in tuple space is shown below.
 
-![TupleChain](D:\Desktop\博士资料\tuplechain\TupleChain.PNG)
+![TupleChain](TupleChain.PNG)
