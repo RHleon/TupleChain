@@ -1,0 +1,40 @@
+#ifndef TSS_BH_HPP
+#define TSS_BH_HPP
+
+#include <tss.hpp>
+
+namespace pp {
+
+#include <tss.hpp>
+
+namespace pp {
+
+class BalancedTuple : public Tuple
+{
+public:
+  BalancedTuple(uint32_t* mask, const int& nFields, int id = 0)
+    : Tuple(mask, nFields, id)
+    , long(nullptr)
+    , short(nullptr)
+    , ic(nullptr)
+  {};
+
+  BalancedTuple* long;
+  BalancedTuple* short;
+  BalancedTuple* ic;
+}
+  
+class BalancedTupleSearch : public TupleSpaceSearch
+{
+public:
+  //static void TEST();
+  BalancedTupleSearch(int nFields = 2) {};
+
+public:
+  virtual uint64_t
+  finalizeConstruction() override {};
+};
+
+} // namespace pp
+
+#endif TSS_BH_HPP

@@ -1,0 +1,34 @@
+#ifndef ORDERED_RULES_HPP
+#define ORDERED_RULES_HPP
+
+#include <packet-classification.hpp>
+#include <set>
+
+namespace pp {
+
+class OrderedRules : public std::set<int>
+{
+public:
+  int maxPriority;
+
+  OrderedRules() : maxPriority(-1) {};
+  void insertRule(const pc_rule_t& rule) {
+    if (rule->priority > maxPriority) maxPriority = rule->priority;
+    insert(rule->priority);
+  }
+  void deleteRule(const pc_rule_t& rule) {
+    erase(rule->priority);
+    if (rule->priority == maxPriority) {
+      if (empty()) {
+	maxPriority = -1;
+      }
+      else {
+	maxPriority = *rbegin();
+      }
+    }
+  }
+};
+
+} // namespace pp
+
+#endif // ORDERED_RULES_HPP
